@@ -12,7 +12,6 @@ package com.mycompany.assignment_3_datastructuress;
 public class HashSymbolTableT<Key, Value> {
 
     
-    //tuple
     ArraySymbolTableT<Key, Value>[] data;
 
     
@@ -33,13 +32,19 @@ public class HashSymbolTableT<Key, Value> {
         int index = searchIndex(key);
         ArraySymbolTableT<Key, Value> values = data[index];
         if(values == null) {
-           data[index] = new ArraySymbolTableT<Key, Value>(); 
+           data[index] = values = new ArraySymbolTableT<Key, Value>(); 
         }
-          values.add(key, value);
+        values.add(key, value);
     }
 
     private int searchIndex(Key key) {
-        return key.hashCode() % data.length;
+        return Math.abs(key.hashCode()) % data.length;
 
+    }
+
+    public void print() {
+        for (ArraySymbolTableT<Key, Value> oneData : data) {
+            oneData.print();
+        }
     }
 }

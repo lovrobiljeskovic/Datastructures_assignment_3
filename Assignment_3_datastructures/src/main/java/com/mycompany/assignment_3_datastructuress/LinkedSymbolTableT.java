@@ -50,5 +50,11 @@ public class LinkedSymbolTableT<Key, Value> {
         }
         return null;
     }
+
+    public void print() {
+        for(Node x = first; x != null; x = x.next) {
+            System.out.println(x.key + "=" + x.value);
+        }
+    }
     
 }
